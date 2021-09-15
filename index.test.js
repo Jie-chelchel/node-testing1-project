@@ -71,12 +71,39 @@ describe("[Exercise 5] Seasons", () => {
   beforeEach(() => {
     seasons = new utils.Seasons(); // each test must start with fresh seasons
   });
-  // test('[9] the FIRST call of seasons.next returns "summer"', () => {})
-  // test('[10] the SECOND call of seasons.next returns "fall"', () => {})
-  // test('[11] the THIRD call of seasons.next returns "winter"', () => {})
-  // test('[12] the FOURTH call of seasons.next returns "spring"', () => {})
-  // test('[13] the FIFTH call of seasons.next returns again "summer"', () => {})
-  // test('[14] the 40th call of seasons.next returns "spring"', () => {})
+  test('[9] the FIRST call of seasons.next returns "summer"', () => {
+    seasons.next();
+    expect(seasons.season).toBe("summer");
+  });
+  test('[10] the SECOND call of seasons.next returns "fall"', () => {
+    seasons.next();
+    seasons.next();
+    expect(seasons.season).toBe("fall");
+  });
+  test('[11] the THIRD call of seasons.next returns "winter"', () => {
+    for (let i = 3; i > 0; i--) {
+      seasons.next();
+    }
+    expect(seasons.season).toBe("winter");
+  });
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {
+    for (let i = 4; i > 0; i--) {
+      seasons.next();
+    }
+    expect(seasons.season).toBe("spring");
+  });
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+    for (let i = 5; i > 0; i--) {
+      seasons.next();
+    }
+    expect(seasons.season).toBe("summer");
+  });
+  test('[14] the 40th call of seasons.next returns "spring"', () => {
+    for (let i = 40; i > 0; i--) {
+      seasons.next();
+    }
+    expect(seasons.season).toBe("spring");
+  });
 });
 
 describe("[Exercise 6] Car", () => {
@@ -84,13 +111,40 @@ describe("[Exercise 6] Car", () => {
   beforeEach(() => {
     focus = new utils.Car("focus", 20, 30); // each test must start with a fresh car
   });
-  // test('[15] driving the car returns the updated odometer', () => {})
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  test("[15] driving the car returns the updated odometer", () => {
+    focus.drive(60);
+    expect(focus.odometer).toBe(60);
+  });
+  test("[16] driving the car uses gas", () => {
+    focus.drive(100);
+    focus.drive(100);
+    focus.drive(100);
+    focus.drive(200);
+    focus.drive(200);
+
+    expect(focus.odometer).toBe(600);
+  });
+  test("[17] refueling allows to keep driving", () => {
+    focus.drive(700);
+
+    expect(focus.odometer).toBe(600);
+    focus.refuel(10);
+    focus.drive(200);
+    expect(focus.odometer).toBe(800);
+  });
+  test("[18] adding fuel to a full tank has no effect", () => {
+    focus.refuel(50);
+    expect(focus.fuel).toBe(20);
+  });
 });
 
 describe("[Exercise 7] isEvenNumberAsync", () => {
-  // test('[19] resolves true if passed an even number', () => {})
-  // test('[20] resolves false if passed an odd number', () => {})
+  test("[19] resolves true if passed an even number", async () => {
+    const result = await utils.isEvenNumberAsync(2);
+    expect(result).toBe(true);
+  });
+  test("[20] resolves false if passed an odd number", async () => {
+    const result = await utils.isEvenNumberAsync(2);
+    expect(result).toBe(true);
+  });
 });
