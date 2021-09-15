@@ -53,7 +53,7 @@ class Counter {
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
     this.count = initialNumber;
-    this.step = 1;
+    this.countTimes = 0;
   }
 
   /**
@@ -69,8 +69,14 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    if (this.count > 0) {
-      return (this.count -= this.step);
+    if (this.countTimes === 0) {
+      this.countTimes++;
+      return this.count;
+    } else {
+      if (this.count > 0) {
+        this.countTimes++;
+        return this.count--;
+      }
     }
   }
 }
