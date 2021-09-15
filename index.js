@@ -75,7 +75,7 @@ class Counter {
     } else {
       if (this.count > 0) {
         this.countTimes++;
-        return this.count--;
+        return (this.count = this.count - 1);
       }
     }
   }
