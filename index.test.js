@@ -64,7 +64,7 @@ describe("[Exercise 4] Counter", () => {
     let testNumber = counter.count + 5;
     while (testNumber > 0) {
       counter.countDown();
-      testNumber--;
+      testNumber = testNumber - 1;
     }
     expect(counter.count).toBe(0);
   });
