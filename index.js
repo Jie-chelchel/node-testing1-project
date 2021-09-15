@@ -105,9 +105,9 @@ class Seasons {
   next() {
     let index = this.seasons.indexOf(this.season);
     if (index < 3) {
-      this.season = this.seasons[index + 1];
+      return (this.season = this.seasons[index + 1]);
     } else {
-      this.season = this.seasons[0];
+      return (this.season = this.seasons[0]);
     }
   }
 }
