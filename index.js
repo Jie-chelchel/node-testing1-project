@@ -145,11 +145,11 @@ class Car {
   drive(distance) {
     const canDrive = this.fuel * this.mpg;
     if (distance < canDrive) {
-      this.odometer = this.odometer + distance;
       this.fuel = this.fuel - distance / this.mpg;
+      return (this.odometer = this.odometer + distance);
     } else {
-      this.odometer = this.odometer + canDrive;
       this.fuel = 0;
+      return (this.odometer = this.odometer + canDrive);
     }
   }
 
@@ -166,9 +166,9 @@ class Car {
    */
   refuel(gallons) {
     if (this.fuel + gallons < this.tank) {
-      this.fuel = this.fuel + gallons;
+      return (this.fuel = this.fuel + gallons);
     } else {
-      this.fuel = this.tank;
+      return (this.fuel = this.tank);
     }
   }
 }
