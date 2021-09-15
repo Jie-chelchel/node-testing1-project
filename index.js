@@ -70,7 +70,7 @@ class Counter {
    */
   countDown() {
     if (this.count > 0) {
-      this.count -= this.step;
+      return (this.count -= this.step);
     }
   }
 }
