@@ -116,17 +116,17 @@ describe("[Exercise 6] Car", () => {
     focus = new utils.Car("focus", 20, 30); // each test must start with a fresh car
   });
   test("[15] driving the car returns the updated odometer", () => {
-    focus.drive(60);
-    expect(focus.odometer).toBe(60);
+    focus.drive(100);
+    focus.drive(100);
+    focus.drive(100);
+    focus.drive(200);
+    focus.drive(200);
+    expect(focus.odometer).toBe(600);
   });
   test("[16] driving the car uses gas", () => {
-    focus.drive(100);
-    focus.drive(100);
-    focus.drive(100);
-    focus.drive(200);
-    focus.drive(200);
+    focus.drive(90);
 
-    expect(focus.odometer).toBe(600);
+    expect(focus.fuel).toBe(17);
   });
   test("[17] refueling allows to keep driving", () => {
     focus.drive(700);
